@@ -27,6 +27,11 @@ public class Horse implements Runnable
         this.ypos = y;
         this.name = name;
     }
+    
+    public void setX(int x)
+    {
+        this.xpos = x;
+    }
 
     
     public void run()

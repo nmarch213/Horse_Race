@@ -24,6 +24,7 @@ public class HorseRace {
         HorseComponent component = new HorseComponent(frame);
         frame.add(component);
         frame.setVisible(true);
+        frame.repaint();
     }
     /**
      * @param args the command line arguments
