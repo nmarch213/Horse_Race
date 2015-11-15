@@ -2,6 +2,7 @@ package nmarch.p4;
 
 import java.awt.*;
 import java.awt.event.*;
+import static java.lang.System.exit;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
@@ -47,9 +48,17 @@ public class HorseComponent extends JPanel
         add(runRace);
         add(resetRace);
         add(quitRace);
-        
+        repaint();
         ActionListener listener = new StartRace();
         runRace.addActionListener(listener);
+        resetRace.addActionListener(listener);
+        quitRace.addActionListener(listener);
+        horse1.setY(0,"Pepsi");
+        horse2.setY(130,"USA");
+        horse3.setY(260,"Paris");
+        horse4.setY(390,"Holly");
+        horse5.setY(520,"Ronda");
+        horse6.setY(650,"Bob");
     }
     
     public class StartRace implements ActionListener
@@ -59,31 +68,42 @@ public class HorseComponent extends JPanel
             JButton b = (JButton)event.getSource();
             if(b == runRace)
             {
+                finished = false;
                 System.out.println("Trumpet Sounds");
                 System.out.println("Gun shot!");
                 Thread t1 = new Thread(horse1);
-                horse1.setY(0,"Pepsi");
                 Thread t2 = new Thread(horse2);
-                horse2.setY(130,"USA");
                 Thread t3 = new Thread(horse3);
-                horse3.setY(260,"Paris");
                 Thread t4 = new Thread(horse4);
-                horse4.setY(390,"Holly");
-                Thread t5 = new Thread(horse5);
-                horse5.setY(520,"Ronda");
-                Thread t6 = new Thread(horse6);
-                horse6.setY(650,"Bob");
-                repaint();
+                Thread t5 = new Thread(horse5);               
+                Thread t6 = new Thread(horse6);              
                 t1.start();
                 t2.start();
                 t3.start();
                 t4.start();
                 t5.start();
                 t6.start();
-
+            }
+            else if(b == resetRace)
+            {
+                System.out.println("Race Resetting!");
+                horse1.setX(0);
+                horse2.setX(0);
+                horse3.setX(0);
+                horse4.setX(0);
+                horse5.setX(0);
+                horse6.setX(0);
+                finished = true;  
+                repaint();
+            }
+            else if(b == quitRace)
+            {
+                exit(1);
             }
         }
     }
+    
+    
     
     public void paintComponent(Graphics g)
     {
