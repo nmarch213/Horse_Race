@@ -14,6 +14,9 @@ import javax.swing.JFrame;
 public class HorseRace {
     final int FRAME_WIDTH = 1200, FRAME_HEIGHT = 800;
 
+    /**
+     * Constructor of a Horse Race, and the window.
+     */
     public HorseRace()
     {
         JFrame frame = new JFrame();
@@ -27,6 +30,7 @@ public class HorseRace {
         frame.repaint();
     }
     /**
+     * main function to run a horse race
      * @param args the command line arguments
      */
     public static void main(String[] args) {

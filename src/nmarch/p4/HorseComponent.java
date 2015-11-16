@@ -3,10 +3,8 @@ package nmarch.p4;
 import java.awt.*;
 import java.awt.event.*;
 import static java.lang.System.exit;
-import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -32,6 +30,11 @@ public class HorseComponent extends JPanel
     Horse horse6 = new Horse(this);   
     JFrame enclosingFrame;
     
+    /**
+     * This creates the Entire frame as well as the buttons insides
+     * This also initializes the Horses used
+     * @param f
+     */
     public HorseComponent(JFrame f)
     {
         runRace = new JButton("Run Race");
@@ -56,17 +59,25 @@ public class HorseComponent extends JPanel
         horse3.setY(260,"Horse3: Paris");
         horse4.setY(390,"Horse4: Holly");
         horse5.setY(520,"Horse5: Ronda");
-        horse6.setY(650,"Horse6: Bob");
+        horse6.setY(650,"Horse6: Bob");  
     }
     
+    /**
+     * This is where each of the threads of horses are began
+     * each of the buttons displayed are also coded here showing what
+     * each action of a button press will result in.
+     * 
+     */
     public class StartRace implements ActionListener
     {
         @Override
         public void actionPerformed(ActionEvent event)
         {
             JButton b = (JButton)event.getSource();
+            //If the button "Run Race" is click. This executes
             if(b == runRace)
-            {
+            { 
+                runRace.setText("FASTER!!!!");
                 finished = false;
                 System.out.println("Trumpet Sounds");
                 System.out.println("Gun shot!");
@@ -81,10 +92,13 @@ public class HorseComponent extends JPanel
                 t3.start();
                 t4.start();
                 t5.start();
-                t6.start();             
+                t6.start();
+         
             }
-            else if(b == resetRace)
+            //If "Reset Race" is clicked. This executes
+            if(b == resetRace)
             {
+                runRace.setText("Run Race");
                 System.out.println("Race Resetting!");
                 horse1.setX(0);
                 horse2.setX(0);
@@ -93,9 +107,11 @@ public class HorseComponent extends JPanel
                 horse5.setX(0);
                 horse6.setX(0);
                 finished = true;  
+
                 repaint();
             }
-            else if(b == quitRace)
+            //Exits the entire program
+            if(b == quitRace)
             {
                 exit(1);
             }
@@ -103,7 +119,7 @@ public class HorseComponent extends JPanel
     }
     
     
-    
+    //This is where the horses are initially drawn
     @Override
     public void paintComponent(Graphics g)
     {
