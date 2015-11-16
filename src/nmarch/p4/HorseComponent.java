@@ -3,11 +3,10 @@ package nmarch.p4;
 import java.awt.*;
 import java.awt.event.*;
 import static java.lang.System.exit;
-import java.util.concurrent.locks.Condition;
-import java.util.concurrent.locks.Lock;
-import java.util.concurrent.locks.ReentrantLock;
+import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
 
@@ -23,15 +22,14 @@ public class HorseComponent extends JPanel
     JButton quitRace;
     HorseComponent h1,h2,h3,h4,h5,h6;
     boolean finished = false;
+    boolean winner = false;
     
     Horse horse1 = new Horse(this);
     Horse horse2 = new Horse(this);
     Horse horse3 = new Horse(this);
     Horse horse4 = new Horse(this);
     Horse horse5 = new Horse(this);
-    Horse horse6 = new Horse(this);
-    
-    
+    Horse horse6 = new Horse(this);   
     JFrame enclosingFrame;
     
     public HorseComponent(JFrame f)
@@ -53,16 +51,17 @@ public class HorseComponent extends JPanel
         runRace.addActionListener(listener);
         resetRace.addActionListener(listener);
         quitRace.addActionListener(listener);
-        horse1.setY(0,"Pepsi");
-        horse2.setY(130,"USA");
-        horse3.setY(260,"Paris");
-        horse4.setY(390,"Holly");
-        horse5.setY(520,"Ronda");
-        horse6.setY(650,"Bob");
+        horse1.setY(000,"Horse1: Pepsi");
+        horse2.setY(130,"Horse2: USA");
+        horse3.setY(260,"Horse3: Paris");
+        horse4.setY(390,"Horse4: Holly");
+        horse5.setY(520,"Horse5: Ronda");
+        horse6.setY(650,"Horse6: Bob");
     }
     
     public class StartRace implements ActionListener
     {
+        @Override
         public void actionPerformed(ActionEvent event)
         {
             JButton b = (JButton)event.getSource();
@@ -82,7 +81,7 @@ public class HorseComponent extends JPanel
                 t3.start();
                 t4.start();
                 t5.start();
-                t6.start();
+                t6.start();             
             }
             else if(b == resetRace)
             {
@@ -105,6 +104,7 @@ public class HorseComponent extends JPanel
     
     
     
+    @Override
     public void paintComponent(Graphics g)
     {
         g.clearRect(0, 0,enclosingFrame.getWidth(),enclosingFrame.getHeight() );
@@ -115,4 +115,8 @@ public class HorseComponent extends JPanel
         g.drawImage(horse5.theImage, horse5.xpos, horse5.ypos, this);
         g.drawImage(horse6.theImage, horse6.xpos, horse6.ypos, this);
     }
+    
+    
+    
+
 }
