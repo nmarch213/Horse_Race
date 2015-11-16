@@ -1,3 +1,11 @@
+/**
+  Student Name: Nicholas March
+  File Name: HorseRace.java
+  Assignment number: 4
+  
+  A Horse and it's properties
+*/
+
 package nmarch.p4;
 
 import java.awt.*;

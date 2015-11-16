@@ -1,4 +1,10 @@
-
+/**
+  Student Name: Nicholas March
+  File Name: StopWatch.java
+  Assignment number: 4
+  
+  @author John Coffey
+*/
 
 package nmarch.p4;
 

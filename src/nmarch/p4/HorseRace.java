@@ -1,8 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+/**
+  Student Name: Nicholas March
+  File Name: HorseRace.java
+  Assignment number: 4
+  
+  Contains Main method of HorseRace
+*/
 package nmarch.p4;
 
 import javax.swing.JFrame;
